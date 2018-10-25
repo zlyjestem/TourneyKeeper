@@ -27,7 +27,7 @@ namespace TourneyKeeper
 
             app.Run(async (context) =>
             {
-                await context.Response.WriteAsync("Hello World!");
+                await context.Response.WriteAsync("At some point of time there will be tournaments");
             });
         }
     }
