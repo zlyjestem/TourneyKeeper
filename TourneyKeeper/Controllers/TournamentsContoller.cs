@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TourneyKeeper.Controllers
 {
-    [Route("api/cities")]
+    [Route("api/tournaments")]
     
     public class TournamentsContoller : Controller
     {
@@ -16,5 +16,10 @@ namespace TourneyKeeper.Controllers
             return Ok("Lorem ipsum");
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetTournament(int id)
+        {
+            return Ok(id.ToString());
+        }
     }
 }
