@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using TK.Tournaments.WebAPI.Models;
 
 namespace TourneyKeeper.Controllers
 {
@@ -19,7 +20,10 @@ namespace TourneyKeeper.Controllers
         [HttpGet("{id}")]
         public IActionResult GetTournament(int id)
         {
-            return Ok(id.ToString());
+            var result = new TournamentDto();
+            result.Id = id;
+            result.Name = "Test tournament";
+            return Ok(result);
         }
     }
 }

@@ -1,30 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import axios from 'axios'
+
 
 class App extends Component {
-  render() {
+  constructor () {
+    super()
+    this.state = {
+      id: '',
+      tournamentName: ''
+    }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick () {
+    axios.get('http://localhost:50434/api/tournaments/1')
+      .then(response => this.setState({tournamentName: response.data.name, id: response.data.id})).catch()
+  }
+
+  render () {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-            <br></br>
-            Hello world!
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div className='button__container'>
+        <button className='button' onClick={this.handleClick}>Click Me</button>
+        <p>Name: {this.state.tournamentName}</p>
+        <div>Id:<span>{this.state.id}</span></div>
+    
       </div>
-    );
+      
+    )
   }
 }
 
-export default App;
+export default App
