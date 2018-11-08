@@ -22,5 +22,6 @@ namespace TK.Tournaments.WebAPI.Models
         public string Venue { get; set; }
         public string Adress { get; set; }
         public string StreamLink { get; set; }
+        public string Description { get; set; }
     }
 }

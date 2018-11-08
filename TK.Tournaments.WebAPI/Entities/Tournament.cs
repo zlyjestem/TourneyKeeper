@@ -17,6 +17,7 @@ namespace TourneyKeeper.Entities
         public string Name { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
+        [Required]
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public float Price { get; set; }
@@ -28,5 +29,6 @@ namespace TourneyKeeper.Entities
         public string Venue { get; set; }
         public string Adress { get; set; }
         public string StreamLink { get; set; }
+        public string Description { get; set; }
     }
 }
