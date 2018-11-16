@@ -14,6 +14,7 @@ namespace TK.Tournaments.WebAPI.Models
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public float Price { get; set; }
+        public string Currency { get; set; }
         public int SwissRounds { get; set; }
         public bool IfTopCut { get; set; }
         public int SizeOfTopCut { get; set; }

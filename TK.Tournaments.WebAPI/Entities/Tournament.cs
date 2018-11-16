@@ -11,7 +11,7 @@ namespace TourneyKeeper.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         [Required]
         [MaxLength(80)]
         public string Name { get; set; }
@@ -21,6 +21,7 @@ namespace TourneyKeeper.Entities
         public DateTime StartDateTime { get; set; }
         public DateTime EndDateTime { get; set; }
         public float Price { get; set; }
+        public string Currency { get; set; }
         public int SwissRounds { get; set; }
         public bool IfTopCut { get; set; }
         public int SizeOfTopCut { get; set; }

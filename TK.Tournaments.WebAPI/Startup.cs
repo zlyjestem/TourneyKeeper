@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using TK.Tournaments.WebAPI;
 using TK.Tournaments.WebAPI.Entities;
 
 namespace TourneyKeeper
@@ -35,7 +36,7 @@ namespace TourneyKeeper
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, TourneyKeeperContext tourneyKeeperContext)
         {
             if (env.IsDevelopment())
             {
@@ -49,6 +50,7 @@ namespace TourneyKeeper
             app.UseCors(builder =>
                 builder.WithOrigins("http://localhost:3000").AllowAnyHeader());
 
+            tourneyKeeperContext.EnsureSeedDataForContext();
             app.UseStatusCodePages();
             app.UseMvc();
         }
