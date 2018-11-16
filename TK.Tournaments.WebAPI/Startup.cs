@@ -11,6 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TK.Tournaments.WebAPI;
 using TK.Tournaments.WebAPI.Entities;
+using TK.Tournaments.WebAPI.Models;
+using TK.Tournaments.WebAPI.Services;
+using TourneyKeeper.Entities;
 
 namespace TourneyKeeper
 {
@@ -33,6 +36,7 @@ namespace TourneyKeeper
 
             var connectionString = Startup.Configuration["connectionStrings:tourneyKeeperDBConnectionString"];
             services.AddDbContext<TourneyKeeperContext>(o => o.UseSqlServer(connectionString));
+            services.AddScoped<ITournamentKeeperRepository, TournamentKeeperRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +56,7 @@ namespace TourneyKeeper
 
             tourneyKeeperContext.EnsureSeedDataForContext();
             app.UseStatusCodePages();
+            AutoMapper.Mapper.Initialize(cfg => { cfg.CreateMap<Tournament, TournamentDto>(); });
             app.UseMvc();
         }
     }
