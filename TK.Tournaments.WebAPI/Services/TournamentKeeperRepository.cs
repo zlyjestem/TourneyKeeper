@@ -16,6 +16,11 @@ namespace TK.Tournaments.WebAPI.Services
             _context = context;
         }
 
+        public bool TournamentExists(int Id)
+        {
+            return _context.Tournaments.Any(t => t.Id == Id);
+        }
+
         public IEnumerable<Tournament> GetTournaments()
         {
             return _context.Tournaments.OrderBy(t => t.StartDateTime).ToList();
@@ -24,6 +29,21 @@ namespace TK.Tournaments.WebAPI.Services
         public Tournament GeTournament(int Id)
         {
             return _context.Tournaments.FirstOrDefault(t => t.Id == Id);
+        }
+
+        public void AddTournament(Tournament tournament)
+        {
+            _context.Tournaments.Add(tournament);
+        }
+
+        public void DeleteTournament(Tournament tournament)
+        {
+            _context.Remove(tournament);
+        }
+
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }

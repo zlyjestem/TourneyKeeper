@@ -56,7 +56,12 @@ namespace TourneyKeeper
 
             tourneyKeeperContext.EnsureSeedDataForContext();
             app.UseStatusCodePages();
-            AutoMapper.Mapper.Initialize(cfg => { cfg.CreateMap<Tournament, TournamentDto>(); });
+            AutoMapper.Mapper.Initialize(cfg => {
+                cfg.CreateMap<Tournament, TournamentDto>();
+                cfg.CreateMap<TournamentForCreationDto, Tournament>();
+                cfg.CreateMap<TournamentForUpdateDto, Tournament>();
+                cfg.CreateMap<Tournament, TournamentForUpdateDto>();
+            });
             app.UseMvc();
         }
     }
