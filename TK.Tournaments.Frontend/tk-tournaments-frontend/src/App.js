@@ -3,6 +3,32 @@ import './App.css'
 import axios from 'axios'
 
 
+class Button extends Component {
+  render() {
+    return (
+      <button className='button' onClick={this.props.onclick}>
+        Get tourney
+      </button>
+    );
+  }
+}
+
+const TourneyCard = (props) => {
+  return (
+    <div className='tournament-box'>
+      <div style= {{display: 'inline'}}>
+        <div style={{ fontSize: '1.25em', fontWeight: 'bold' }}>Name: {props.tournamentName}</div>
+        <div>Id: <span>{props.id}</span></div>
+      </div>
+      <div>
+        <div style={{ width: '40%', textAlign: 'center' }}> {props.description} </div>
+        {props.ifTopCut && <h5>Top Cut</h5>}
+      </div>
+    </div>
+
+  );
+};
+
 class App extends Component {
   constructor() {
     super()
@@ -29,16 +55,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div className='button__container'>
-          <button className='button' onClick={this.handleClick}>Click Me</button>
-        </div>
-        <div className='tournament-box'>
-          <p>Name: {this.state.tournamentName}</p>
-          <div>Id: <span>{this.state.id}</span></div>
-          <p>{this.state.description}</p>
-          {this.state.ifTopCut && <h5>Top Cut</h5>}
-        </div>
+        < Button onclick={this.handleClick} />
+        < TourneyCard {...this.state} />
       </div>
+
 
     )
   }
