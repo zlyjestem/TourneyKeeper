@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import './App.css'
 import axios from 'axios'
+import TourneyCard from './components/TourneyCard'
+//import Button from './components/Button'
 
 
 class Button extends Component {
@@ -12,22 +14,6 @@ class Button extends Component {
     );
   }
 }
-
-const TourneyCard = (props) => {
-  return (
-    <div className='tournament-box'>
-      <div style= {{display: 'inline'}}>
-        <div style={{ fontSize: '1.25em', fontWeight: 'bold' }}>Name: {props.tournamentName}</div>
-        <div>Id: <span>{props.id}</span></div>
-      </div>
-      <div>
-        <div style={{ width: '40%', textAlign: 'center' }}> {props.description} </div>
-        {props.ifTopCut && <h5>Top Cut</h5>}
-      </div>
-    </div>
-
-  );
-};
 
 class App extends Component {
   constructor() {
@@ -43,7 +29,7 @@ class App extends Component {
 
 
   handleClick() {
-    axios.get('http://localhost:50434/api/tournaments/2')
+    axios.get('http://localhost:50434/api/tournaments/1')
       .then(response => this.setState({
         tournamentName: response.data.name,
         id: response.data.id,
@@ -58,8 +44,6 @@ class App extends Component {
         < Button onclick={this.handleClick} />
         < TourneyCard {...this.state} />
       </div>
-
-
     )
   }
 
