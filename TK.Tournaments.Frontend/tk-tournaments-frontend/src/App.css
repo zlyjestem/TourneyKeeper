@@ -1,9 +1,11 @@
+.fonts {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
 .button__container {
   margin-top: 200px;
   text-align: center;
 }
-
-
 
 .button {
   background-color:green;

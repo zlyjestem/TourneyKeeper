@@ -9,7 +9,7 @@ namespace TK.Tournaments.WebAPI.Services
 {
     public class TournamentKeeperRepository : ITournamentKeeperRepository
     {
-        private TourneyKeeperContext _context;
+        public TourneyKeeperContext _context;
 
         public TournamentKeeperRepository(TourneyKeeperContext context)
         {

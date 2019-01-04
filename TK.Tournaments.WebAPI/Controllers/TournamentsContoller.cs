@@ -25,7 +25,7 @@ namespace TourneyKeeper.Controllers
         public IActionResult GetTournaments()
         {
             var tournamentEntities = _tournamentKeeperRepository.GetTournaments();
-            var results = Mapper.Map<IEnumerable<TournamentDto>>(tournamentEntities);
+            var results = Mapper.Map<IEnumerable<TournamentSummaryDto>>(tournamentEntities);
             return Ok(results);
         }
 
@@ -34,7 +34,6 @@ namespace TourneyKeeper.Controllers
         {
             var tournamentEntity = _tournamentKeeperRepository.GeTournament(id);
             if (tournamentEntity == null) return NotFound();
-            
 
             var result = Mapper.Map<TournamentDto>(tournamentEntity);
             return Ok(result);

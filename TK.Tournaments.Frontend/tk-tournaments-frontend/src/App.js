@@ -2,52 +2,40 @@ import React, { Component } from 'react'
 import './App.css'
 import axios from 'axios'
 import TourneyCard from './components/TourneyCard'
-//import Button from './components/Button'
-
-
-class Button extends Component {
-  render() {
-    return (
-      <button className='button' onClick={this.props.onclick}>
-        Get tourney
-      </button>
-    );
-  }
-}
+import Header from './components/Header'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      id: '',
-      tournamentName: '',
-      description: '',
-      ifTopCut: false
+      listOfTournaments: [],
+      loading: true
     }
-    this.handleClick = this.handleClick.bind(this)
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:50434/api/tournaments/')
+      .then(response =>
+        this.setState({ listOfTournaments: response.data, loading: false })
+      ).catch();
 
-  handleClick() {
-    axios.get('http://localhost:50434/api/tournaments/1')
-      .then(response => this.setState({
-        tournamentName: response.data.name,
-        id: response.data.id,
-        description: response.data.description,
-        ifTopCut: response.data.ifTopCut
-      })).catch()
   }
 
   render() {
+
     return (
-      <div>
-        < Button onclick={this.handleClick} />
-        < TourneyCard {...this.state} />
+      <div className=''>
+        < Header />
+        <div className="container-fluid bg-cl-silver">
+          <div className="container">
+            {this.state.listOfTournaments.map((item, index) => (
+              < TourneyCard key={index} item={item} />
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
-
-
 }
 
 export default App

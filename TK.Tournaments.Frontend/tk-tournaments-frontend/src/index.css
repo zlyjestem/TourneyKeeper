@@ -12,3 +12,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.cl-red {
+  color: #C13D3D;
+}
+
+.bg-cl-red {
+  background-color: #C13D3D;
+}
+
+.cl-near-white {
+  color: #EEEEEE;
+}
+
+.bg-cl-near-white {
+  background-color: #EEEEEE;
+}
+
+.cl-silver {
+  color: #bdbaba;
+}
+
+.bg-cl-silver {
+  background-color: #bdbaba;
+}

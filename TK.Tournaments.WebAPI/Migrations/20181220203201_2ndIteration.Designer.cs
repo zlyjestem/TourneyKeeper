@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TK.Tournaments.WebAPI.Entities;
 
 namespace TK.Tournaments.WebAPI.Migrations
 {
     [DbContext(typeof(TourneyKeeperContext))]
-    partial class TourneyKeeperContextModelSnapshot : ModelSnapshot
+    [Migration("20181220203201_2ndIteration")]
+    partial class _2ndIteration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

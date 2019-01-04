@@ -31,5 +31,6 @@ namespace TourneyKeeper.Entities
         public string Adress { get; set; }
         public string StreamLink { get; set; }
         public string Description { get; set; }
+        public string Format { get; set; }
     }
 }
