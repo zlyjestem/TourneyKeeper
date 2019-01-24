@@ -3,6 +3,13 @@ import './App.css'
 import axios from 'axios'
 import TourneyCard from './components/TourneyCard'
 import Header from './components/Header'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faIgloo } from '@fortawesome/free-solid-svg-icons'
+import {faMoneyBill} from '@fortawesome/free-solid-svg-icons'
+
+library.add(faIgloo)
+library.add(faMoneyBill)
 
 class App extends Component {
   constructor() {
